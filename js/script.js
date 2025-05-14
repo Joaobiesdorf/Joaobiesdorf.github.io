@@ -303,3 +303,33 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(typeWriter, 1000);
     }
 });
+document.addEventListener("DOMContentLoaded", function () {
+        const modal = document.getElementById("videoModal");
+        const video = document.getElementById("videoPlayer");
+        const closeBtn = document.querySelector(".close");
+        const demoBtn = document.getElementById("cervejariaDemo");
+
+        if (demoBtn) {
+          demoBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            modal.style.display = "flex";
+            video.play();
+          });
+        }
+
+        if (closeBtn) {
+          closeBtn.addEventListener("click", function () {
+            modal.style.display = "none";
+            video.pause();
+            video.currentTime = 0;
+          });
+        }
+
+        window.addEventListener("click", function (event) {
+          if (event.target === modal) {
+            modal.style.display = "none";
+            video.pause();
+            video.currentTime = 0;
+          }
+        });
+      });
